@@ -1,0 +1,42 @@
+datasource db {
+    provider = "mongodb"
+    url = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+enum Role {
+    ADMIN
+    MODERATOR
+    USER
+}
+
+enum Status {
+    ACCEPTED
+    COOKING
+    DELIVERING
+    DELIVERED
+    REJECTED
+}
+
+model User {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    username String
+    role Role
+}
+
+model Order {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    type String
+    size String
+    thickness String
+    crust String
+    toppings String[]
+    address String
+    comment String?
+    status Status
+    slack_user_id String
+    createdAt DateTime
+}
