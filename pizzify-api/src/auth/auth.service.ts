@@ -18,7 +18,7 @@ export class AuthService {
         const userEntry = await this.usersService.getUser(user)
 
         // Compare the passwords from request and DB
-        if (user.passwordHash !== userEntry.password) {
+        if (user.password !== userEntry.password) {
             throw new UnauthorizedException('Bad credentials')
         }
 
@@ -29,10 +29,10 @@ export class AuthService {
 
     async login(user: UserDTO) {
         const userEntry = await this.validateUser(user);
-        return await this.signPayload({sub: userEntry.id})
+        return await this.signPayload({sub: userEntry.id, role: userEntry.role})
     }
 
-    async signPayload(payload: {sub: string}) {
+    async signPayload(payload: {sub: string, role: string}) {
         return {
             access_token: this.jwtService.sign(payload),
         }

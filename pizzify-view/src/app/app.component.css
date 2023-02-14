@@ -1,0 +1,7 @@
+.order {
+    display: grid;
+}
+
+.order--data {
+    grid-row: 1;
+}

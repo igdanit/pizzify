@@ -1,0 +1,44 @@
+<div class="order"> 
+    <div class="order--data">
+        {{order.type}}    
+    </div>
+    <div class="order--data">
+        {{order.size}}
+    </div>
+    <div class="order--data">
+        {{order.thickness}}
+    </div>
+    <div class="order--data">
+        {{order.crust}}
+    </div>
+    <div class="order--data">
+        {{order.toppings.toString()}}
+    </div>
+    <div class="order--data">
+       {{order.address}} 
+    </div>
+    <div class="order--data">
+        {{order.comment}}
+    </div>
+    <div class="order--data">
+        {{order.createdAt.toLocaleString('ru-RU')}}
+    </div>
+    <div class="order--data">
+        {{order.slackUser.username}}
+    </div>
+    <div class="order--data">
+        <img [src]="order.slackUser.userAvatar" alt="Аватар клиента" width="64px" height="64px">
+    </div>
+    <div class="order--data">
+        <form [formGroup]="form">
+            <select formControlName="state">
+                <option *ngFor="let status of getStatusesAsArray()" [ngValue]="status">
+                    {{orderStatuses[status]}}
+                </option>
+            </select>
+        </form>
+    </div>
+    <div class="order--data">
+        <button class="button" (click)="updateStatus()">Изменить статус</button>
+    </div>
+</div>

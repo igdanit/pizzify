@@ -6,19 +6,21 @@ import prismaService from './prisma/prisma.service'
 import { Status as STATUS, Order as pizzaOrder } from '.prisma/client'
 import { OrderStatus } from './utils/phrases'
 
+import server from './server';
+
 let pizzaVariants: SelectMenuOption[];
 let pizzaSizes: SelectMenuOption[];
 let pizzaThicknesses: SelectMenuOption[];
 let pizzaCrusts: SelectMenuOption[];
 let pizzaToppings: SelectMenuOption[];
 
-const slackApp = new App({
+export const slackApp = new App({
     token: SETTINGS.SLACK_BOT_TOKEN,
     signingSecret: SETTINGS.SLACK_SIGNING_SECRET,
     socketMode: true,
     appToken: SETTINGS.SLACK_APP_TOKEN,
     logLevel: LogLevel.DEBUG,
-    port: Number(SETTINGS.SLACK_BOT_PORT) || 3000,
+    port: Number(SETTINGS.SLACK_BOT_PORT) || 3001,
 })
 
 slackApp.command('/order', async ({command, ack, body, client}) => {
@@ -60,9 +62,6 @@ slackApp.message('', async ({ message, say}) => {
             },
         ],
     })
-    console.log(await slackApp.client.users.profile.get({
-        user: Object.getOwnPropertyDescriptor(message, 'user')?.value
-    }))
 });
 
 
@@ -72,6 +71,7 @@ slackApp.view("view_pizza_order", async ({ ack, body, view, client, logger }) =>
     let msg: string = ""; // Response message
     const fields = view.state.values // modal window values
     const userID = body.user.id
+    console.log(body)
     const [
         orderPizzaType,
         orderPizzaSize,
@@ -136,4 +136,6 @@ slackApp.action("selectPizzaToppings", async ({ack}) => {
     await slackApp.start();
 
     console.log('__________________BOT____IS____RUNNING__________________')
+
+    await server(); //ExpressJs server. Responsible for fetching userData and sending notification to user.
 })();

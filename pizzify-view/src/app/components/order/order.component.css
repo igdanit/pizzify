@@ -1,0 +1,12 @@
+.order {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 5px;
+    border: solid 2px peachpuff;
+}
+
+.order--data {
+    align-self: center;
+    justify-self: center;
+    grid-row: 1;
+}

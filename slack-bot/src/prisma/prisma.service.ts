@@ -47,16 +47,3 @@ type Configuration = Promise<string[]>
 
 const prismaService = new PrismaService(new PrismaClient());
 export default prismaService;
-
-// interface IPizzaOrder {
-//     type: string,
-//     size: string,
-//     thickness: string,
-//     crust: string,
-//     topping: string[],
-//     address: string,
-//     comment: string,
-//     status: OrderStatus,
-//     slack_user_id: string,
-//     user_email: string
-// }

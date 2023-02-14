@@ -1,0 +1,36 @@
+.auth {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    background-color: rgba(44,44,44,1);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: medium solid rgba(69,2,20);
+}
+
+.auth--input-field > input {
+    margin-top: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}
+
+.auth--input-field > label {
+    display: block;
+    text-align: center;
+}
+
+.button {
+    display: block;
+    margin: auto;
+    padding: 5px 15px;
+}
+.auth > * {
+    margin: 10px 10px;
+}
+
+.auth--input-field {
+    margin: 10px;
+}

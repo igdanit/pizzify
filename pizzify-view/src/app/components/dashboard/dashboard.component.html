@@ -1,0 +1,50 @@
+<div class="dashboard">
+    <div class="dashboard--header">
+        DASHBOARD
+    </div>
+    <div class="dashboard--items">
+        <div class="order">
+            <div class="order--data">
+                Название
+            </div>
+            <div class="order--data">
+                Размер
+            </div>
+            <div class="order--data">
+                Тип теста
+            </div>
+            <div class="order--data">
+                Тип бортика
+            </div>
+            <div class="order--data">
+                Добавки к пицце
+            </div>
+            <div class="order--data">
+                Адрес доставки
+            </div>
+            <div class="order--data">
+                Комментарий к заказу
+            </div>
+            <div class="order--data">
+                Время заказа
+            </div>
+            <div class="order--data">
+                Клиент
+            </div>
+            <div class="order--data">
+                Аватар клиента
+            </div>
+            <div class="order--data">
+                Статус заказа
+            </div>
+            <div class="order--data">
+                Подтвердить
+            </div>
+        </div>
+        <app-order *ngFor="let order of orders" [order]="order" [status]="order.status"></app-order>
+    </div>
+    <div class="pagination">
+        <button class="button" (click)="nextOrders()">Следующие</button>
+        <button class="button" (click)="previousOrders()">Предыдущие</button>
+    </div>
+</div>

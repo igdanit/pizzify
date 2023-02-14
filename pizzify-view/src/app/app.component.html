@@ -1,0 +1,2 @@
+<app-auth *ngIf="!isModerator && !isAdmin" (onModerator)="isModerator=true"></app-auth>
+<app-dashboard *ngIf="isModerator || isAdmin"></app-dashboard>

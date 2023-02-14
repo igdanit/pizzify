@@ -1,0 +1,26 @@
+.dashboard--header {
+    text-align: center;
+}
+
+.dashboard--items {
+    display: grid;
+}
+
+.order {
+    border: solid 5px black;
+    display: grid;
+    margin: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.order--data {
+    align-self: center;
+    justify-self: center;
+    grid-row: 1;
+}
+
+.pagination {
+   display: flex;
+   align-items: center;
+   justify-content: center; 
+}
